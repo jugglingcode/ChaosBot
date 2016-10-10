@@ -1,0 +1,545 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "main.rb",
+			"settings":
+			{
+				"buffer_size": 476,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "rpg/commands.rb",
+			"settings":
+			{
+				"buffer_size": 610,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "examples/pm_send.rb",
+			"settings":
+			{
+				"buffer_size": 528,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "rpg/data.rb",
+			"settings":
+			{
+				"buffer_size": 206,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "rpg/config.rb",
+			"settings":
+			{
+				"buffer_size": 355,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "rpg/player.rb",
+			"settings":
+			{
+				"buffer_size": 102,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "rpg/enemy.rb",
+			"settings":
+			{
+				"buffer_size": 172,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"contents": "# This example is nearly the same as the normal ping example, but rather than simply responding with \"Pong!\", it also\n# responds with the time it took to send the message.\n\nrequire 'discordrb'\n\nbot = Discordrb::Commands::CommandBot.new token: 'MjA4NjY0MzY3NTkwMjc3MTIw.CtssUw.pfNXMoUBRsBC39hxdDFpx_xKFYY', client_id: 208664297801252865, prefix: '!'\n\n=begin\nbot.message(content: 'Ping!') do |event|\n  # The `respond` method returns a `Message` object, which is stored in a variable `m`. The `edit` method is then called\n  # to edit the message with the time difference between when the event was received and after the message was sent.\n  m = event.respond('Pong!')\n  m.edit \"Pong! Time taken: #{Time.now - event.timestamp} seconds.\"\nend\n=end\n\nbot.command(:roll) do |event, *args|\n  # Roll COMMAND bitches /////\n  if args.size > 0\n  	dice = 1\n  	sides = 6\n  	if args.size > 1\n  	end\n  else\n  	Random.new.rand(1..6) \n  end\nend\n\nbot.run\n",
+			"file": "examples/ping_with_respond_time.rb",
+			"file_size": 930,
+			"file_write_time": 131204510401585005,
+			"settings":
+			{
+				"buffer_size": 934,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"settings":
+			{
+				"buffer_size": 0,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"contents": "# This bot has various commands that show off CommandBot.\n\nrequire 'discordrb'\n\n# Here we instantiate a `CommandBot` instead of a regular `Bot`, which has the functionality to add commands using the\n# `command` method. We have to set a `prefix` here, which will be the character that triggers command execution.\nbot = Discordrb::Commands::CommandBot.new token: 'B0T.T0KEN.here', application_id: 160123456789876543, prefix: '!'\n\n\n\nbot.command :user do |event|\n  # Commands send whatever is returned from the block to the channel. This allows for compact commands like this,\n  # but you have to be aware of this so you don't accidentally return something you didn't intend to.\n  # To prevent the return value to be sent to the channel, you can just return `nil`.\n  event.user.name\nend\n\nbot.command :bold do |_event, *args|\n  # Again, the return value of the block is sent to the channel\n  \"**#{args.join(' ')}**\"\nend\n\nbot.command :italic do |_event, *args|\n  \"*#{args.join(' ')}*\"\nend\n\nbot.command(:join, permission_level: 1, chain_usable: false) do |event, invite|\n  event.bot.join invite\n\n  # The `join` call above returns the data Discord sends as a response to joining the server. We don't want that\n  # in the channel so here we're just returning `nil` afterwards\n  nil\nend\n\nbot.command(:random, min_args: 0, max_args: 2, description: 'Generates a random number between 0 and 1, 0 and max or min and max.', usage: 'random [min/max] [max]') do |_event, min, max|\n  # The `if` statement returns one of multiple different things based on the condition. Its return value\n  # is then returned from the block and sent to the channel\n  if max\n    rand(min.to_i..max.to_i)\n  elsif min\n    rand(0..min.to_i)\n  else\n    rand\n  end\nend\n\nbot.command :long do |event|\n  event << 'This is a long message.'\n  event << 'It has multiple lines that are each sent by doing `event << line`.'\n  event << 'This is an easy way to do such long messages, or to create lines that should only be sent conditionally.'\n  event << 'Anyway, have a nice day.'\n\n  # Here we don't have to worry about the return value because the `event << line` statement automatically returns nil.\nend\n\nbot.run\n",
+			"file": "examples/commands.rb",
+			"file_size": 2163,
+			"file_write_time": 131204360951256815,
+			"settings":
+			{
+				"buffer_size": 2165,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/D/Projects/DiscordRB",
+		"/D/Projects/DiscordRB/examples",
+		"/D/Projects/DiscordRB/rpg"
+	],
+	"file_history":
+	[
+		"/C/Users/Ronnie/Documents/Games/QuestSystem/js/plugins/GameusQuestSystem.js",
+		"/C/Users/Ronnie/Documents/Games/Quest System Redux/js/plugins/QuestSystem.js",
+		"/C/Users/Ronnie/Documents/Games/Quest System Redux/questSystem.sublime-project",
+		"/D/Projects/Web/page.html"
+	],
+	"find":
+	{
+		"height": 34.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"def command",
+			"command",
+			"commandbot"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "main.rb",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 476,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								401,
+								401
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Ruby/Ruby.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "rpg/commands.rb",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 610,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								453,
+								453
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Ruby/Ruby.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "examples/pm_send.rb",
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 528,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Ruby/Ruby.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "rpg/data.rb",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 206,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								206,
+								206
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Ruby/Ruby.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "rpg/config.rb",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 355,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								218,
+								218
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Ruby/Ruby.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 8,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "rpg/player.rb",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 102,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								52,
+								52
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Ruby/Ruby.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "rpg/enemy.rb",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 172,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								163,
+								163
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Ruby/Ruby.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "examples/ping_with_respond_time.rb",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 934,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								317,
+								335
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Ruby/Ruby.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 0,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"default_dir": "D:\\Projects\\DiscordRB\\rpg",
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 9,
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "examples/commands.rb",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2165,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								982,
+								982
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Ruby/Ruby.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 23.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "Packages/Ruby/Ruby.sublime-build",
+	"project": "chaosbot.sublime-project",
+	"replace":
+	{
+		"height": 42.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 256.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
