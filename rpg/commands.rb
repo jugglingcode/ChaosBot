@@ -75,3 +75,7 @@ $bot.command(:start) { |event, *args|
 		end
 	end
 }
+
+$bot.command(:pmme) { |event|
+  event.user.pm("Hello there!")
+}
