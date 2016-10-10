@@ -6,6 +6,7 @@ module ChaosBot
 		BotToken         = 'MjA4NjY0MzY3NTkwMjc3MTIw.CtssUw.pfNXMoUBRsBC39hxdDFpx_xKFYY'
 		ClientID         = 208664297801252865
 		CommandPrefix    = '$'
+		Hello            = ''
 	end
 
 	module RPGSettings
