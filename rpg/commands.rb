@@ -1,3 +1,7 @@
+$bot.command(:test) { |event| 
+	event << "Soulshaker3 likes to eat dicks"
+}
+
 $bot.command(:roll) { |event, *args|
 	rand = Random.new
 	if args.size >= 1
