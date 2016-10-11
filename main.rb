@@ -1,5 +1,5 @@
 require 'discordrb'
-require_relative 'rpg/config.rb'
+require_relative 'config.rb'
 require_relative 'rpg/data.rb'
 
 $clientID = ARGV[0] == nil ? ChaosBot::BotSettings::ClientID : ARGV[0].to_i
