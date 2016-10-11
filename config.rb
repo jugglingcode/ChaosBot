@@ -1,5 +1,4 @@
 # These are the settings you can control for your server.
-# Rename to config.rb and configure accordingly
 
 module ChaosBot
 
@@ -10,9 +9,14 @@ module ChaosBot
 	end
 
 	module RPGSettings
+		Enable           = true
 		MaxGold          = 99999
 		MaxLevel         = 99
 		MaxStats         = 999
+	end
+
+	module Steam
+		Enable           = true
 	end
 
 end
