@@ -1,3 +1,3 @@
 @echo off
-main.rb
+main.rb 
 pause
