@@ -32,6 +32,7 @@ $bot.ready() { |event|
 # This particular command allows requiring all .rb files in a certain directory.
 Dir["./lib/*.rb"].each { |file| require_relative file }
 Dir["./rpg/*.rb"].each { |file| require_relative file }
+Dir["./steam/*.rb"].each { |file| require_relative file }
 Dir["./commands/*.rb"].each { |file| require_relative file }
 # Adds command containers here
 $bot.include!(Commands_Test)

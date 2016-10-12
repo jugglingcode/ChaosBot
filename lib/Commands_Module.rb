@@ -78,7 +78,11 @@ module Discordrb::Commands
         # Commands restricted only to the following list of text channels
         channels: attributes[:channels] || [],
         # Displays an error message if using a command outside of the allowed text channels
-        channels_message: attributes[:channels_message] || "This command may only be used in the following channels: #{attributes[:channels]}"
+        channels_message: attributes[:channels_message] || "This command may only be used in the following channels: #{attributes[:channels]}",
+
+        # Denotes whether the command is enabled or not
+        enabled: attributes[:enabled] || true,
+        disabled_message: attributes[:disabled_message] || "`%name%`, or its module, is not enabled.",
       }
 
       @block = block
@@ -86,6 +90,10 @@ module Discordrb::Commands
 
     alias recall_command call
     def call(event, arguments, chained = false)
+      if !@attributes[:enabled]
+        event.send_message(@attributes[:disabled_message])
+        return
+      end
       if @attributes[:channels].nil? || @attributes[:channels] == [] || @attributes[:channels].include?(event.channel.name)
         return recall_command(event, arguments, chained)
       elsif @attributes[:channels_message].is_a?(String)
