@@ -33,7 +33,7 @@ class SteamData
 
 end
 
-if SteamConfig::Enabled
+if $settings["Steam"]["Enabled"]
 	$steam_data = SteamData.new
 	SteamData.load
 end

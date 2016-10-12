@@ -9,11 +9,22 @@ $players = {
 	},
 }
 
+# Doing it wrong. Need to create a servers hash to keep players data separate from other servers.
+# Will need to add TO the "bot ready" method and detect servers. 
+
+$servers = {
+	"server id" => {
+		"player id" => {
+			"name" => "RPG Dummy"
+		}
+	}
+}
+
 module RPGData
 	def self.dump
 
 	end
-	def self.load
+	def self.load(file)
 
 	end
 end

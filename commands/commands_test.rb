@@ -10,6 +10,11 @@ module Commands_Test
     event << "Soulshaker3 likes to eat dicks"
   }
 
+  command(:toggle_steam) {|event|
+      $settings["Steam"]["Enabled"] = !$settings["Steam"]["Enabled"]
+      "Steam module has been turned " + ($settings["Steam"]["Enabled"] == true ? "on" : "off")
+  }
+
   command(:roll) { |event, *args|
     rand = Random.new
     if args.size >= 1

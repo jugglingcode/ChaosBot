@@ -10,8 +10,10 @@ ARGV.each{ |arg|
     $clientID = arg
   end
 }
-$clientID = ARGV[0] == nil ? ChaosBot::BotSettings::ClientID : ARGV[0].to_i
-$botToken = ARGV[1] == nil ? ChaosBot::BotSettings::BotToken : ARGV[1].to_s
+
+# Grabs Client ID and Token from passed arguments, else resorts to BotSettings
+$clientID = ARGV[0] == nil ? ChaosBot::BotSettings::ClientID : ARGV[0].to_i if $clientID == nil
+$botToken = ARGV[1] == nil ? ChaosBot::BotSettings::BotToken : ARGV[1].to_s if $botToken == nil
 
 # If either is not provided, alert user and exit the program
 error_msg = "\nPlease consult config.rb or use the following command in console when starting the bot:\nruby main.rb [CLIENT_ID BOT_TOKEN]"
@@ -27,6 +29,7 @@ end
 $bot = Discordrb::Commands::CommandBot.new token: $botToken, client_id: $clientID, prefix: ChaosBot::BotSettings::CommandPrefix
 $bot.ready() { |event| 
   $bot.game = "Use $help to get started"
+  # AT SOME POINT IMPLEMENT LOADING DATA FILES HERE, OR SOMEWHERE ELSE, I DON'T CARE
 }
 # Read in the rest of the supporting classes that contain classes or other bot commands.
 # This particular command allows requiring all .rb files in a certain directory.
@@ -37,6 +40,7 @@ Dir["./commands/*.rb"].each { |file| require_relative file }
 # Adds command containers here
 $bot.include!(Commands_Test)
 $bot.include!(Commands_RPG)
+$bot.include!(Commands_Steam)
 # Start the bot asynchronously
 $bot.run :async
 # Program will now be stuck in this loop until bot closes. Use for time-related events or the like.
