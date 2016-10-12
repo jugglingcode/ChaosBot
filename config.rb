@@ -26,7 +26,7 @@ $settings = {
 			"ClientID" => nil,
 			"CommandPrefix" => '$',
 		},
-
+		# Honestly, this should probably go in its own file in the RPG module, but meh, lazynesssssssss
 		"RPGSettings" => {
 			"MaxGold" => 99999,
 			"MaxLevel" => 99,
